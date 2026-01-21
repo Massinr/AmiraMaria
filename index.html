@@ -1,16 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Amira Maria Services</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="/logo.png" type="image/png">
+    <style>
+        .language-switcher {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 1600;
+            display: flex;
+            gap: 8px;
+            background: rgba(44, 27, 19, 0.8);
+            padding: 8px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(250, 233, 195, 0.2);
+        }
+
+        .lang-btn {
+            padding: 8px 16px;
+            background: rgba(250, 233, 195, 0.1);
+            color: var(--primary-cream);
+            border: 1px solid rgba(250, 233, 195, 0.2);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            background: rgba(250, 233, 195, 0.2);
+            border-color: rgba(250, 233, 195, 0.4);
+        }
+
+        .lang-btn.active {
+            background: var(--primary-cream);
+            color: var(--primary-brown);
+            border-color: var(--primary-cream);
+        }
+
+        [dir="rtl"] {
+            direction: rtl;
+        }
+
+        [dir="rtl"] .hero h3,
+        [dir="rtl"] .intro span,
+        [dir="rtl"] .services-title,
+        [dir="rtl"] .contact-title {
+            text-align: right;
+        }
+
+        [dir="rtl"] .social-link:hover {
+            transform: translateX(-8px);
+        }
+
+        @media (max-width: 768px) {
+            .language-switcher {
+                top: 70px;
+                right: 15px;
+                padding: 6px;
+            }
+
+            .lang-btn {
+                padding: 6px 12px;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
 </head>
 <body>
-<!-- Navigation - Outside container, always visible -->
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn active" onclick="switchLanguage('fr')">FR</button>
+        <button class="lang-btn" onclick="switchLanguage('ar')">AR</button>
+    </div>
+
+    <!-- Navigation -->
     <div class="nav" id="nav">
         <div class="logo">
-            <img src="logo.png" alt="Amira Maria Logo">
+            <img src="/logo.png" alt="Amira Maria Logo">
             <h5>Amira Maria Services</h5>
         </div>
         
@@ -21,25 +94,24 @@
         </div>
         
         <div class="hyperlinks" id="mobileMenu">
-            <a href="#home" class="activeHyperlink">Home</a>
-            <a href="#about">About Us</a>
-            <a href="#services">Services</a>
-            <a href="#contact">Contact</a>
+            <a href="#home" class="activeHyperlink" data-fr="Accueil" data-ar="الرئيسية">Accueil</a>
+            <a href="#about" data-fr="À Propos" data-ar="معلومات عنا">À Propos</a>
+            <a href="#services" data-fr="Services" data-ar="الخدمات">Services</a>
+            <a href="#contact" data-fr="Contact" data-ar="اتصل بنا">Contact</a>
         </div>
     </div>
     
     <div class="menu-overlay" id="menuOverlay"></div>
-
     <div class="container">
         <div class="intro" id="intro">
-            <img src="logo.png" alt="Amira Maria Logo">
+            <img src="/logo.png" alt="Amira Maria Logo">
             <span>Amira Maria Services</span>
         </div>
         
         <div class="home" id="home">
             <div class="hero">
                 <h3>Amira Maria Services</h3>
-                <img src="logo.png" alt="">
+                <img src="/logo.png" alt="">
             </div>
             <button class="floatingArrowButton">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -47,23 +119,208 @@
                 </svg>
             </button>
             <div class="background">
-                <img src="chefchaoun.jpg" class="imageBg" alt="">
+                <img src="/chefchaoun.jpg" class="imageBg" alt="">
                 <div class="imageOverlay"></div>
                 <div class="dividingDiv"></div>
             </div>
         </div>
         
         <div class="aboutUs" id="about">
-            <h2 style="color: #FAE9C3; padding: 100px 20px; text-align: center;">About Us Section</h2>
+            <div class="cardContainer">
+                <div class="card">
+                    <div class="imageCardBackground" style="background-image: url('/cardBg2.jpg');"></div>
+                    <div class="textContainer">
+                        <h2 data-fr="Ce Que Nous Faisons" data-ar="ما نقوم به">Ce Que Nous Faisons</h2>
+                        <p data-fr="Services essentiels, rendus simples et accessibles. Du ménage et de la cuisine à la garde d'enfants, aux soins aux personnes âgées et à l'assistance quotidienne, nous fournissons des solutions pratiques qui facilitent la vie dans les communautés du Maroc." 
+                           data-ar="خدمات أساسية، بسيطة ومتاحة. من التنظيف والطبخ إلى رعاية الأطفال ورعاية المسنين والمساعدة اليومية، نقدم حلولاً عملية تجعل الحياة أسهل في المجتمعات في جميع أنحاء المغرب.">
+                            Services essentiels, rendus simples et accessibles. Du ménage et de la cuisine à la garde d'enfants, aux soins aux personnes âgées et à l'assistance quotidienne, nous fournissons des solutions pratiques qui facilitent la vie dans les communautés du Maroc.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="imageCardBackground" style="background-image: url('/cardBg1.jpg');"></div>
+                    <div class="textContainer">
+                        <h2 data-fr="Notre Mission" data-ar="مهمتنا">Notre Mission</h2>
+                        <p data-fr="Nous existons pour soutenir les femmes et les familles. Notre objectif est de connecter les femmes cherchant un travail honnête avec les ménages et les personnes ayant besoin d'une assistance quotidienne fiable - créant dignité, confiance et opportunité pour tous." 
+                           data-ar="نحن موجودون لدعم النساء والعائلات. هدفنا هو ربط النساء اللواتي يبحثن عن عمل شريف مع الأسر والأفراد الذين يحتاجون إلى مساعدة يومية موثوقة - خلق الكرامة والثقة والفرصة للجميع.">
+                            Nous existons pour soutenir les femmes et les familles. Notre objectif est de connecter les femmes cherchant un travail honnête avec les ménages et les personnes ayant besoin d'une assistance quotidienne fiable - créant dignité, confiance et opportunité pour tous.
+                        </p>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="imageCardBackground" style="background-image: url('/cardBg3.jpg');"></div>
+                    <div class="textContainer">
+                        <h2 data-fr="Confiance & Sécurité" data-ar="الثقة والأمان">Confiance & Sécurité</h2>
+                        <p data-fr="Basé sur le respect, la fiabilité et la transparence. Nous priorisons la sécurité, la communication claire et le respect mutuel, garantissant la tranquillité d'esprit pour les prestataires de services et ceux qui reçoivent de l'aide." 
+                           data-ar="مبني على الاحترام والموثوقية والشفافية. نعطي الأولوية للسلامة والتواصل الواضح والاحترام المتبادل، مما يضمن راحة البال لكل من مقدمي الخدمات والذين يتلقون المساعدة.">
+                            Basé sur le respect, la fiabilité et la transparence. Nous priorisons la sécurité, la communication claire et le respect mutuel, garantissant la tranquillité d'esprit pour les prestataires de services et ceux qui reçoivent de l'aide.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
+        
         <div class="services" id="services">
-            <h2 style="color: #FAE9C3; padding: 100px 20px; text-align: center;">Services Section</h2>
+            <h2 class="services-title" data-fr="Nos Services" data-ar="خدماتنا">Nos Services</h2>
+            
+            <div class="slideshow-container">
+                <div class="slide active">
+                    <div class="slide-image" style="background-color: #8B4513;"></div>
+                    <div class="slide-content">
+                        <h3 data-fr="Ménage" data-ar="التنظيف المنزلي">Ménage</h3>
+                        <p class="slide-text" id="text-1" 
+                           data-fr="Services de nettoyage professionnel pour votre maison. Nous veillons à ce que chaque coin soit impeccable et désinfecté. Notre équipe expérimentée utilise des produits écologiques pour maintenir un environnement de vie sain. Planifiez des nettoyages réguliers ou des nettoyages en profondeur ponctuels selon vos besoins."
+                           data-ar="خدمات تنظيف احترافية لمنزلك. نضمن أن كل زاوية نظيفة ومعقمة. يستخدم فريقنا ذو الخبرة منتجات صديقة للبيئة للحفاظ على بيئة معيشية صحية. جدولة التنظيف المنتظم أو التنظيف العميق لمرة واحدة بناءً على احتياجاتك.">
+                            Services de nettoyage professionnel pour votre maison. Nous veillons à ce que chaque coin soit impeccable et désinfecté. Notre équipe expérimentée utilise des produits écologiques pour maintenir un environnement de vie sain.
+                        </p>
+                        <button class="read-more-btn" onclick="toggleReadMore(1)" data-fr="Lire Plus" data-ar="اقرأ المزيد">Lire Plus</button>
+                    </div>
+                </div>
+                
+                <div class="slide">
+                    <div class="slide-image" style="background-color: #CD853F;"></div>
+                    <div class="slide-content">
+                        <h3 data-fr="Cuisine à Domicile" data-ar="الطبخ المنزلي">Cuisine à Domicile</h3>
+                        <p class="slide-text" id="text-2"
+                           data-fr="Délicieux repas faits maison préparés dans votre cuisine. Nos cuisiniers qualifiés créent des plats marocains traditionnels et une cuisine internationale adaptée à vos préférences. Profitez de repas frais et sains sans les tracas de la cuisine."
+                           data-ar="وجبات منزلية لذيذة محضرة في مطبخك. يصنع طهاتنا المهرة أطباق مغربية تقليدية ومأكولات عالمية مصممة حسب تفضيلاتك. استمتع بوجبات طازجة وصحية دون عناء الطهي.">
+                            Délicieux repas faits maison préparés dans votre cuisine. Nos cuisiniers qualifiés créent des plats marocains traditionnels et une cuisine internationale adaptée à vos préférences.
+                        </p>
+                        <button class="read-more-btn" onclick="toggleReadMore(2)" data-fr="Lire Plus" data-ar="اقرأ المزيد">Lire Plus</button>
+                    </div>
+                </div>
+                
+                <div class="slide">
+                    <div class="slide-image" style="background-color: #DEB887;"></div>
+                    <div class="slide-content">
+                        <h3 data-fr="Garde d'Enfants" data-ar="رعاية الأطفال">Garde d'Enfants</h3>
+                        <p class="slide-text" id="text-3"
+                           data-fr="Soutien fiable et attentionné pour vos enfants. Nos soignants expérimentés offrent un environnement sûr et nourrissant pour les enfants de tous âges. De l'aide aux devoirs aux activités ludiques, nous veillons à ce que vos enfants soient heureux et bien pris en charge."
+                           data-ar="دعم موثوق ومهتم لأطفالك. يوفر مقدمو الرعاية ذوو الخبرة لدينا بيئة آمنة ومغذية للأطفال من جميع الأعمار. من المساعدة في الواجبات المنزلية إلى أنشطة اللعب، نضمن أن يكون أطفالك سعداء ويتلقون رعاية جيدة.">
+                            Soutien fiable et attentionné pour vos enfants. Nos soignants expérimentés offrent un environnement sûr et nourrissant pour les enfants de tous âges.
+                        </p>
+                        <button class="read-more-btn" onclick="toggleReadMore(3)" data-fr="Lire Plus" data-ar="اقرأ المزيد">Lire Plus</button>
+                    </div>
+                </div>
+                
+                <div class="slide">
+                    <div class="slide-image" style="background-color: #BC8F8F;"></div>
+                    <div class="slide-content">
+                        <h3 data-fr="Soins aux Aînés" data-ar="رعاية المسنين">Soins aux Aînés</h3>
+                        <p class="slide-text" id="text-4"
+                           data-fr="Soins compatissants pour vos proches âgés. Nos soignants offrent de la compagnie, des rappels de médicaments et une assistance pour les activités quotidiennes. Nous traitons chaque aîné avec dignité et respect, garantissant confort et sécurité."
+                           data-ar="رعاية رحيمة لأحبائك المسنين. يوفر مقدمو الرعاية لدينا الرفقة وتذكيرات الدواء والمساعدة في الأنشطة اليومية. نعامل كل كبير بكرامة واحترام، مما يضمن الراحة والأمان.">
+                            Soins compatissants pour vos proches âgés. Nos soignants offrent de la compagnie, des rappels de médicaments et une assistance pour les activités quotidiennes.
+                        </p>
+                        <button class="read-more-btn" onclick="toggleReadMore(4)" data-fr="Lire Plus" data-ar="اقرأ المزيد">Lire Plus</button>
+                    </div>
+                </div>
+                
+                <div class="slide">
+                    <div class="slide-image" style="background-color: #A0522D;"></div>
+                    <div class="slide-content">
+                        <h3 data-fr="Services de Blanchisserie" data-ar="خدمات الغسيل">Services de Blanchisserie</h3>
+                        <p class="slide-text" id="text-5"
+                           data-fr="Soins complets de blanchisserie du lavage au repassage. Nous manipulons les tissus délicats avec soin et veillons à ce que vos vêtements soient à leur meilleur. Options de ramassage et de livraison disponibles. Économisez du temps et profitez de vêtements nettoyés professionnellement."
+                           data-ar="عناية كاملة بالغسيل من الغسل إلى الكي. نتعامل مع الأقمشة الرقيقة بعناية ونضمن أن تبدو ملابسك في أفضل حالاتها. خيارات الاستلام والتوصيل متاحة. وفر الوقت واستمتع بالملابس المنظفة بشكل احترافي.">
+                            Soins complets de blanchisserie du lavage au repassage. Nous manipulons les tissus délicats avec soin et veillons à ce que vos vêtements soient à leur meilleur.
+                        </p>
+                        <button class="read-more-btn" onclick="toggleReadMore(5)" data-fr="Lire Plus" data-ar="اقرأ المزيد">Lire Plus</button>
+                    </div>
+                </div>
+                
+                <div class="slide">
+                    <div class="slide-image" style="background-color: #8B7355;"></div>
+                    <div class="slide-content">
+                        <h3 data-fr="Assistant Personnel" data-ar="مساعد شخصي">Assistant Personnel</h3>
+                        <p class="slide-text" id="text-6"
+                           data-fr="Assistance quotidienne pour les courses, le shopping et la gestion du ménage. Nos assistants aident à organiser votre vie afin que vous puissiez vous concentrer sur ce qui compte le plus. Des courses à la prise de rendez-vous, nous gérons les détails."
+                           data-ar="المساعدة اليومية في المهمات والتسوق وإدارة المنزل. يساعد مساعدونا في تنظيم حياتك حتى تتمكن من التركيز على ما يهم أكثر. من التسوق إلى جدولة المواعيد، نتعامل مع التفاصيل.">
+                            Assistance quotidienne pour les courses, le shopping et la gestion du ménage. Nos assistants aident à organiser votre vie afin que vous puissiez vous concentrer sur ce qui compte le plus.
+                        </p>
+                        <button class="read-more-btn" onclick="toggleReadMore(6)" data-fr="Lire Plus" data-ar="اقرأ المزيد">Lire Plus</button>
+                    </div>
+                </div>
+                
+                <button class="prev" onclick="changeSlide(-1)">❮</button>
+                <button class="next" onclick="changeSlide(1)">❯</button>
+                
+                <div class="slide-indicators">
+                    <span class="indicator active" onclick="currentSlide(1)"></span>
+                    <span class="indicator" onclick="currentSlide(2)"></span>
+                    <span class="indicator" onclick="currentSlide(3)"></span>
+                    <span class="indicator" onclick="currentSlide(4)"></span>
+                    <span class="indicator" onclick="currentSlide(5)"></span>
+                    <span class="indicator" onclick="currentSlide(6)"></span>
+                </div>
+            </div>
         </div>
+        
         <div class="contactUs" id="contact">
-            <h2 style="color: #FAE9C3; padding: 100px 20px; text-align: center;">Contact Section</h2>
+            <div class="contact-container">
+                <div class="social-section">
+                    <h3 data-fr="Connectez-vous Avec Nous" data-ar="تواصل معنا">Connectez-vous Avec Nous</h3>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/yousra.yaser.148?mibextid=rS40aB7S9Ucbxw6v" class="social-link" target="_blank">
+                            <div class="social-icon facebook-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                            </div>
+                            <div class="social-text">
+                                <span class="social-name">Facebook</span>
+                                <span class="social-handle">Amira Maria Services</span>
+                            </div>
+                        </a>
+                        <a href="https://wa.me/212767685880" class="social-link" target="_blank">
+                            <div class="social-icon whatsapp-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                                </svg>
+                            </div>
+                            <div class="social-text">
+                                <span class="social-name">WhatsApp</span>
+                                <span class="social-handle">Amira Maria</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-<script src="./script.js"></script>
-</body>
 
+    <script src="./script.js"></script>
+    <script>
+        let currentLang = 'fr';
+
+        function switchLanguage(lang) {
+            currentLang = lang;
+            const html = document.documentElement;
+            
+            html.setAttribute('lang', lang);
+            html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr');
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            document.querySelectorAll('[data-fr], [data-ar]').forEach(element => {
+                const text = element.getAttribute(`data-${lang}`);
+                if (text) {
+                    element.textContent = text;
+                }
+            });
+            
+            const readMoreBtns = document.querySelectorAll('.read-more-btn');
+            readMoreBtns.forEach(btn => {
+                if (!btn.textContent.includes('Moins') && !btn.textContent.includes('أقل')) {
+                    btn.textContent = lang === 'fr' ? 'Lire Plus' : 'اقرأ المزيد';
+                } else {
+                    btn.textContent = lang === 'fr' ? 'Lire Moins' : 'اقرأ أقل';
+                }
+            });
+        }
+    </script>
+</body>
 </html>
